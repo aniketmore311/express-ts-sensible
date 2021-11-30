@@ -1,6 +1,8 @@
-# sensible express-ts starter
+# Express-ts-sensible
 
-to use this starter run :
+## Simple, minimal and unopinionated express-ts starter template for you next express REST API
+
+### To use this starter run :
 
 1. `$ npx degit aniketmore311/express-ts-sensible <your project name>`
 2. `$ cd <your project name>`
@@ -8,7 +10,7 @@ to use this starter run :
 4. `$ npm install`
 5. `$ npm start`
 
-## this starter includes
+### This starter includes
 
 - sensible error handler and 404 handler for express REST API
 - `dotenv` for environment variables
