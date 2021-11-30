@@ -1,5 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "running pre commit hook"
+echo "running pre-commit hooks"
 npm run format
+echo "pre-commit hooks completed"
