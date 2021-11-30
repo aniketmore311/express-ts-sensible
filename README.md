@@ -1,6 +1,6 @@
 # sensible express-ts starter
 
-to use this starter run :\
+to use this starter run :
 
 1. `$ npx degit aniketmore311/express-ts-sensible <your project name>`
 2. `$ cd <your project name>`
@@ -11,10 +11,11 @@ to use this starter run :\
 ## this starter includes
 
 - sensible error handler and 404 handler for express REST API
-- `http-errors` to throw errors
-- `express-validator` for validation
-- `morgan` for logging
-- `cors`, `helmet`, `make-promises-safe` for security
 - `dotenv` for environment variables
+- `morgan` for logging
 - logging for prod and dev environments
-- `nodemon` and `ts-node` for ease of development
+- `cors`, `helmet`, `make-promises-safe` for security
+- `express-validator` and validation middleware for validation
+- `http-errors` for good error handling
+- `nodemon`, `ts-node`, `eslint` and `prettier` for ease of development
+- Dockerfile for docker support
