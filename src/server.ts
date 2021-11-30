@@ -6,7 +6,7 @@ import { app } from './app'
 import { getEnv } from './lib/utils'
 
 const PORT = getEnv('PORT', '8080')
-const NODE_ENV = getEnv('NODE_ENV', 'production')
+const NODE_ENV = getEnv('NODE_ENV', 'development')
 
 app.listen(PORT, () => {
   console.log(`server started - port: ${PORT}, mode: ${NODE_ENV}`)

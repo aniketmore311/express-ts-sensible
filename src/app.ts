@@ -16,14 +16,14 @@ export const app = express()
 const NODE_ENV = getEnv('NODE_ENV', 'development')
 // stream for access logs in production
 const accessLogFileStream = fs.createWriteStream(
-  path.join(appConfig.properties.ROOT_DIR, 'logs/access.log'),
+  path.join(appConfig.ROOT_DIR, 'logs/access.log'),
   {
     flags: 'a',
   }
 )
 // file stream to error logs in prodution
 const errorLogFileStream = fs.createWriteStream(
-  path.join(appConfig.properties.ROOT_DIR, 'logs/error.log'),
+  path.join(appConfig.ROOT_DIR, 'logs/error.log'),
   {
     flags: 'a',
   }
@@ -62,20 +62,22 @@ app.use(notFoundHandler())
 
 // error handlers
 // log errors in console in development
-if (NODE_ENV == "development") {
+if (NODE_ENV == 'development') {
   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    console.log("Error: " + err.message)
-    next(err);
+    console.log('Error: ' + err.message)
+    next(err)
   })
 }
 // log errors to file in production
-if (NODE_ENV == "production") {
+if (NODE_ENV == 'production') {
   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     res.on('finish', () => {
-      const logLine = `${Date.now()}\t${new Date().toISOString()}\t${req.method} ${req.url} ${res.statusCode}\t${err.message}\n`
-      errorLogFileStream.write(logLine);
+      const logLine = `${Date.now()}\t${new Date().toISOString()}\t${
+        req.method
+      } ${req.url} ${res.statusCode}\t${err.message}\n`
+      errorLogFileStream.write(logLine)
     })
-    next(err);
+    next(err)
   })
 }
 
