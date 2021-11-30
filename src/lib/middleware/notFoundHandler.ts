@@ -5,13 +5,9 @@ interface customError extends Error {
 }
 
 export function notFoundHandler(): Handler {
-  return function (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) {
-    const err: customError = new Error('resource not found');
-    err.statusCode = 404;
-    next(err);
+  return function (req: Request, res: Response, next: NextFunction) {
+    const err: customError = new Error('resource not found')
+    err.statusCode = 404
+    next(err)
   }
 }

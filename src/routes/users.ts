@@ -30,8 +30,8 @@ userRouter.get(
   '/:id',
   [param('id').isNumeric(), validate()],
   catchAsync(async (req, res) => {
-    const id = Number(req.params.id);
-    const filterUsers = users.filter(user => {
+    const id = Number(req.params.id)
+    const filterUsers = users.filter((user) => {
       if (user.id == id) {
         return true
       } else {
@@ -42,7 +42,7 @@ userRouter.get(
       throw new createHttpError.NotFound('user not found')
     }
     return res.json({
-      data: filterUsers[0]
+      data: filterUsers[0],
     })
   })
 )

@@ -13,7 +13,7 @@ export function validate(): Handler {
       const message = `${error.param} ${error.msg}`
       const err: validationError = new Error(message)
       err.statusCode = 400
-      next(err);
+      next(err)
     }
     next()
   }
