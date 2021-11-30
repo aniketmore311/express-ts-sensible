@@ -1,7 +1,8 @@
 import { Handler, NextFunction, Request, Response } from 'express'
 
 /**
- * @description warp async route handlers with this function to avoid unhandled rejection error
+ * @description warp async route handlers with this function to avoid unhandled rejection error. converts async req handler to sync request handler
+ * @returns sync express request handler
  */
 export function catchAsync(
   /*eslint-disable-next-line */
@@ -15,7 +16,8 @@ export function catchAsync(
 }
 
 /**
- * @description used to load env variables
+ * @description used to get env variables
+ * @returns if env variable is present then it will be returned else if default string is given then it will be returned otherwise error will be thrown.
  */
 export function getEnv(key: string, defaultValue?: string): string {
   const val = process.env[key]
