@@ -3,6 +3,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import fs from 'fs'
+import os from 'os'
 import path from 'path'
 
 import { userRouter } from './routes/users'
@@ -15,8 +16,15 @@ export const app = express()
 
 const NODE_ENV = getEnv('NODE_ENV', 'development')
 // log morgan output to file
-const logFileStream = fs.createWriteStream(
+const accessLogFileStream = fs.createWriteStream(
   path.join(appConfig.properties.ROOT_DIR, 'logs/access.log'),
+  {
+    flags: 'a',
+  }
+)
+// file stream to error logs in prodution
+const errorLogFileStream = fs.createWriteStream(
+  path.join(appConfig.properties.ROOT_DIR, 'logs/error.log'),
   {
     flags: 'a',
   }
@@ -33,7 +41,7 @@ if (NODE_ENV == 'development') {
 if (NODE_ENV == 'production') {
   app.use(
     morgan('combined', {
-      stream: logFileStream,
+      stream: accessLogFileStream,
     })
   )
 }
@@ -45,14 +53,23 @@ app.get('/health', (req, res) => {
 })
 
 app.use('/api/v1/users', userRouter)
+
 // 404 handler
 app.use(notFoundHandler())
 
 // error handlers
-//log error in console if in development
+// log error in console in development
 if (NODE_ENV == "development") {
   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    console.log(err)
+    console.log("Error: " + err.message)
+    next(err);
+  })
+}
+// log errors to file in production
+if (NODE_ENV == "production") {
+  app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    const logLine = `${new Date().toISOString()}\t${req.method} ${req.url}\t${err.message}\n`
+    errorLogFileStream.write(logLine);
     next(err);
   })
 }

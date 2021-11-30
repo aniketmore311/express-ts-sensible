@@ -23,7 +23,6 @@ export function getEnv(key: string, defaultValue?: string): string {
     if (defaultValue === undefined) {
       throw new Error(`environment variable ${key} not found`)
     } else {
-      process.env[key] = defaultValue
       return defaultValue
     }
   }
