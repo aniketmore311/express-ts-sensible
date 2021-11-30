@@ -1,4 +1,4 @@
-import { ErrorRequestHandler, Request, Response, NextFunction } from 'express'
+import { ErrorRequestHandler, NextFunction, Request, Response } from 'express'
 
 interface customError extends Error {
   statusCode?: number
@@ -9,6 +9,7 @@ export function errorHandler(): ErrorRequestHandler {
     err: customError,
     req: Request,
     res: Response,
+    /*eslint-disable-next-line */
     next: NextFunction
   ) {
     let statusCode = 500
