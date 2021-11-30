@@ -16,5 +16,5 @@ to use this starter run :\
 - `morgan` for logging
 - `cors`, `helmet`, `make-promises-safe` for security
 - `dotenv` for environment variables
+- logging for prod and dev environments
 - `nodemon` and `ts-node` for ease of development
-- `husky` for git hooks
