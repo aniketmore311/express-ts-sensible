@@ -41,7 +41,7 @@ app.use(express.json())
 
 // controllers
 app.get('/health', (req, res) => {
-  res.json({ status: 'healthy' })
+  return res.json({ status: 'healthy' })
 })
 
 app.use('/api/v1/users', userRouter)

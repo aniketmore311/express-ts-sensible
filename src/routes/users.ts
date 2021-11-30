@@ -1,8 +1,9 @@
 import express from 'express'
 import { param } from 'express-validator'
+import createHttpError from 'http-errors'
+
 import { catchAsync } from '../lib/utils'
 import { validate } from '../lib/middleware/validate'
-import createHttpError from 'http-errors'
 
 export const userRouter = express.Router()
 

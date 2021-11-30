@@ -1,7 +1,6 @@
 import 'make-promises-safe'
 import { config } from 'dotenv'
 config()
-console.log(process.env.NODE_ENV);
 
 import { app } from './app'
 import { getEnv } from './lib/utils'
