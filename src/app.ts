@@ -8,12 +8,11 @@ import path from 'path'
 import { userRouter } from './routes/users'
 import { errorHandler } from './lib/middleware/errorHandler'
 import { notFoundHandler } from './lib/middleware/notFoundHandler'
-import { getEnv } from './lib/utils'
 import { appConfig } from './config/appConfig'
 
 export const app = express()
 
-const NODE_ENV = getEnv('NODE_ENV', 'development')
+const NODE_ENV = appConfig.env.NODE_ENV;
 // stream for access logs in production
 const accessLogFileStream = fs.createWriteStream(
   path.join(appConfig.ROOT_DIR, 'logs/access.log'),
@@ -72,9 +71,8 @@ if (NODE_ENV == 'development') {
 if (NODE_ENV == 'production') {
   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     res.on('finish', () => {
-      const logLine = `${Date.now()}\t${new Date().toISOString()}\t${
-        req.method
-      } ${req.url} ${res.statusCode}\t${err.message}\n`
+      const logLine = `${Date.now()}\t${new Date().toISOString()}\t${req.method
+        } ${req.url} ${res.statusCode}\t${err.message}\n`
       errorLogFileStream.write(logLine)
     })
     next(err)

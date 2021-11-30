@@ -3,10 +3,10 @@ import { config } from 'dotenv'
 config()
 
 import { app } from './app'
-import { getEnv } from './lib/utils'
+import { appConfig } from './config/appConfig'
 
-const PORT = getEnv('PORT', '8080')
-const NODE_ENV = getEnv('NODE_ENV', 'development')
+const PORT = appConfig.env.PORT;
+const NODE_ENV = appConfig.env.NODE_ENV;
 
 app.listen(PORT, () => {
   console.log(`server started - port: ${PORT}, mode: ${NODE_ENV}`)
