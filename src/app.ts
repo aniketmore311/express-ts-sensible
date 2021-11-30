@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
@@ -40,5 +40,12 @@ app.get('/health', (req, res) => {
 app.use('/api/v1/users', userRouter)
 
 app.use(notFoundHandler())
+
+if (NODE_ENV == "development") {
+  app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    console.log(err)
+    next(err);
+  })
+}
 
 app.use(errorHandler())
