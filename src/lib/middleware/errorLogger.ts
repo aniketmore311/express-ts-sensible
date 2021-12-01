@@ -1,6 +1,9 @@
 import { ErrorRequestHandler } from 'express'
 import { WriteStream } from 'fs'
 
+/**
+ * @description ndjson error logging middleware
+ */
 export function errorLogger({
   stream,
 }: {

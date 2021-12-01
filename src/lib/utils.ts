@@ -1,17 +1,15 @@
 import { Handler, NextFunction, Request, Response } from 'express'
 
 /**
- * @description warp async route handlers with this function to avoid unhandled rejection error. converts async req handler to sync request handler
+ * @description converts async req handler to sync request handler
  * @returns sync express request handler
  */
 export function catchAsync(
   /*eslint-disable-next-line */
   fn: (req: Request, res: Response, next: NextFunction) => Promise<any>
 ): Handler {
-  return function (req: Request, res: Response, next: NextFunction) {
-    fn(req, res, next).catch((err) => {
-      next(err)
-    })
+  return function (req, res, next) {
+    fn(req, res, next).catch(next)
   }
 }
 
