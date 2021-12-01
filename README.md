@@ -2,6 +2,8 @@
 
 ## Simple, minimal and unopinionated express-ts starter template for you next express REST API
 
+#### for javascript version visit [express-js-sensible](https://www.github.com/aniketmore311/express-js-sensible)
+
 ### To use this starter run :
 
 1. `$ npx degit aniketmore311/express-ts-sensible <your project name>`
