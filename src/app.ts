@@ -13,7 +13,7 @@ import { errorLogger } from './lib/middleware/errorLogger'
 
 export const app = express()
 
-const NODE_ENV = appConfig.env.NODE_ENV;
+const NODE_ENV = appConfig.env.NODE_ENV
 // stream for access-logs in production
 const accessLogFileStream = fs.createWriteStream(
   path.join(appConfig.ROOT_DIR, 'logs/access.log'),
@@ -70,9 +70,11 @@ if (NODE_ENV == 'development') {
 }
 // log to file in production
 if (NODE_ENV == 'production') {
-  app.use(errorLogger({
-    stream: errorLogFileStream
-  }))
+  app.use(
+    errorLogger({
+      stream: errorLogFileStream,
+    })
+  )
 }
 
 app.use(errorHandler())

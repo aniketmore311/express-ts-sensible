@@ -1,12 +1,15 @@
-import { ErrorRequestHandler } from "express";
-import { WriteStream } from "fs";
+import { ErrorRequestHandler } from 'express'
+import { WriteStream } from 'fs'
 
-
-export function errorLogger({ stream }: { stream: WriteStream }): ErrorRequestHandler {
+export function errorLogger({
+  stream,
+}: {
+  stream: WriteStream
+}): ErrorRequestHandler {
   return function (err, req, res, next) {
-    const time = new Date();
-    const url = req.url;
-    const method = req.method;
+    const time = new Date()
+    const url = req.url
+    const method = req.method
 
     res.on('finish', () => {
       const logJson = {
@@ -19,10 +22,10 @@ export function errorLogger({ stream }: { stream: WriteStream }): ErrorRequestHa
           stack: err.stack,
           name: err.name,
           statusCode: res.statusCode,
-        }
+        },
       }
 
-      const logLine = JSON.stringify(logJson) + "\n";
+      const logLine = JSON.stringify(logJson) + '\n'
       stream.write(logLine)
     })
 

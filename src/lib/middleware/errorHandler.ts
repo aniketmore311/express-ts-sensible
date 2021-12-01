@@ -1,4 +1,4 @@
-import { ErrorRequestHandler} from 'express'
+import { ErrorRequestHandler } from 'express'
 
 export function errorHandler(): ErrorRequestHandler {
   return function (
