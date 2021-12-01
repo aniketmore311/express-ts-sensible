@@ -15,8 +15,9 @@
 - sensible error handler and 404 handler for express REST API
 - `dotenv` for environment variables
 - `morgan` for logging
-- logging for prod and dev environments
+- error and access logging for prod and dev environments
 - `cors`, `helmet`, `make-promises-safe` for security
+- `pm2` as production runtime
 - `express-validator` and validation middleware for validation
 - `http-errors` for good error handling
 - `nodemon`, `ts-node`, `eslint` and `prettier` for ease of development
