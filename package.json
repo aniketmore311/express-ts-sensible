@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2-runtime dist/server.js",
-    "start:node": "node dist/server.js",
     "prestart": "tsc",
+    "start:node": "node dist/server.js",
     "build": "tsc",
     "dev": "nodemon src/server.ts",
     "format": "prettier --write .",
