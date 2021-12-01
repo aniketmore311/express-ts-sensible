@@ -32,11 +32,11 @@ const errorLogFileStream = fs.createWriteStream(
 //middleware
 app.use(cors())
 app.use(helmet())
-// log to console if in development
+// log to console in development
 if (NODE_ENV == 'development') {
   app.use(morgan('dev'))
 }
-// log to file if in production
+// log to file in production
 if (NODE_ENV == 'production') {
   app.use(
     morgan('common', {
