@@ -14,16 +14,21 @@ import { errorLogger } from './lib/middleware/errorLogger'
 export const app = express()
 
 const NODE_ENV = appConfig.env.NODE_ENV
+const LOG_DIR = appConfig.LOG_DIR;
+// create logging directory if doesn't exist
+if (!fs.existsSync(LOG_DIR)) {
+  fs.mkdirSync(LOG_DIR);
+}
 // stream for access-logs in production
 const accessLogFileStream = fs.createWriteStream(
-  path.join(appConfig.ROOT_DIR, 'logs/access.log'),
+  path.join(LOG_DIR, "access.log"),
   {
     flags: 'a',
   }
 )
 // file stream to error-logs in production
 const errorLogFileStream = fs.createWriteStream(
-  path.join(appConfig.ROOT_DIR, 'logs/error.log'),
+  path.join(LOG_DIR, "error.log"),
   {
     flags: 'a',
   }
