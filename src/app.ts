@@ -9,6 +9,8 @@ import { userRouter } from './routes/users'
 import { errorHandler } from './lib/middleware/errorHandler'
 import { notFoundHandler } from './lib/middleware/notFoundHandler'
 import { appConfig } from './config/appConfig'
+import { json } from 'stream/consumers'
+import { errorLogger } from './lib/middleware/errorLogger'
 
 export const app = express()
 
@@ -38,7 +40,7 @@ if (NODE_ENV == 'development') {
 // log to file if in production
 if (NODE_ENV == 'production') {
   app.use(
-    morgan('combined', {
+    morgan('common', {
       stream: accessLogFileStream,
     })
   )
@@ -63,24 +65,15 @@ app.use(notFoundHandler())
 // log errors to console in development
 if (NODE_ENV == 'development') {
   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    console.log('Error: ' + err.message)
+    console.log(err.stack || err.message)
     next(err)
   })
 }
-// log errors to file in production
+// log to file in production
 if (NODE_ENV == 'production') {
-  app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    const time = new Date();
-    const url = req.url;
-    const method = req.method;
-    const message = err.message;
-    res.on('finish', () => {
-      const logLine = `${time.getTime()}\t${time.toISOString()}\t${method
-        } ${url} ${res.statusCode}\t${message}\n`
-      errorLogFileStream.write(logLine)
-    })
-    next(err)
-  })
+  app.use(errorLogger({
+    stream: errorLogFileStream
+  }))
 }
 
 app.use(errorHandler())

@@ -1,16 +1,12 @@
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express'
 
-interface customError extends Error {
-  statusCode?: number
-}
-
 export function errorHandler(): ErrorRequestHandler {
   return function (
-    err: customError,
-    req: Request,
-    res: Response,
+    err,
+    req,
+    res,
     /*eslint-disable-next-line */
-    next: NextFunction
+    next
   ) {
     let statusCode = 500
     let message = 'something went wrong'
