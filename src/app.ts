@@ -9,7 +9,6 @@ import { userRouter } from './routes/users'
 import { errorHandler } from './lib/middleware/errorHandler'
 import { notFoundHandler } from './lib/middleware/notFoundHandler'
 import { appConfig } from './config/appConfig'
-import { json } from 'stream/consumers'
 import { errorLogger } from './lib/middleware/errorLogger'
 
 export const app = express()
