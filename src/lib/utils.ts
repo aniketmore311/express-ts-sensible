@@ -13,18 +13,3 @@ export function catchAsync(
   }
 }
 
-/**
- * @description used to get env variables
- * @returns if env variable is present then it will be returned else if default string is given then it will be returned otherwise error will be thrown.
- */
-export function getEnv(key: string, defaultValue?: string): string {
-  const val = process.env[key]
-  if (val === undefined) {
-    if (defaultValue === undefined) {
-      throw new Error(`environment variable ${key} not found`)
-    } else {
-      return defaultValue
-    }
-  }
-  return val
-}
