@@ -9,13 +9,12 @@ import { userRouter } from './routes/users'
 import { errorHandler } from './lib/middleware/errorHandler'
 import { notFoundHandler } from './lib/middleware/notFoundHandler'
 import appConfig from './config/appConfig'
-import envConfig from './config/envConfig'
 import { errorLogger } from './lib/middleware/errorLogger'
 
 export const app = express()
 
-const NODE_ENV = envConfig.get("NODE_ENV");
-const LOG_DIR = appConfig.get("LOG_DIR");
+const NODE_ENV = appConfig.env.NODE_ENV;
+const LOG_DIR = appConfig.properties.LOG_DIR;
 // create logging directory if doesn't exist
 if (!fs.existsSync(LOG_DIR)) {
   fs.mkdirSync(LOG_DIR);
