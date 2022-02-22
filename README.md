@@ -3,6 +3,7 @@
 ## Simple, minimal and unopinionated express-ts starter template for you next express REST API
 
 #### for javascript version visit [express-js-sensible](https://www.github.com/aniketmore311/express-js-sensible)
+#### for a object oriented version visit [express-tsoo-sensible](https://www.github.com/aniketmore311/express-tsoo-sensible)
 
 ### To use this starter run :
 
