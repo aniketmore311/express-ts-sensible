@@ -4,7 +4,7 @@ import { WriteStream } from 'fs'
 /**
  * @description ndjson error logging middleware
  */
-export function errorLogger({
+export function fileErrorLogger({
   stream,
 }: {
   stream: WriteStream

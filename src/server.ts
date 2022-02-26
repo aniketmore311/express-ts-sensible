@@ -4,10 +4,11 @@ config()
 
 import { app } from './app'
 import appConfig from './config/appConfig'
+import { getEnv } from './lib/utils'
 
-const PORT = appConfig.env.PORT;
-const NODE_ENV = appConfig.env.NODE_ENV;
-const name = appConfig.properties.APP_NAME;
+const PORT = getEnv('PORT')
+const NODE_ENV = getEnv('NODE_ENV')
+const name = appConfig.getConfig('APP_NAME')
 
 app.listen(PORT, () => {
   console.log(`${name}\nserver started - port: ${PORT}, mode: ${NODE_ENV}`)
