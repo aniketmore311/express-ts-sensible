@@ -7,7 +7,7 @@ import registerUserRoutes from './routes/users'
 import { errorHandler } from './lib/middleware/errorHandler'
 import { notFoundHandler } from './lib/middleware/notFoundHandler'
 import { consoleErrorLogger } from './lib/middleware/consoleErrorLogger'
-import { configService } from './config'
+import { configService } from './setup'
 
 export const app = express()
 

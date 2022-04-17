@@ -3,7 +3,7 @@ import { config } from 'dotenv'
 config()
 
 import { app } from './app'
-import { configService } from './config'
+import { configService } from './setup'
 
 async function bootstrap() {
   const PORT = configService.getConfig('PORT')
