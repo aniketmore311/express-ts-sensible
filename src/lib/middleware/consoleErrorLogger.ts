@@ -27,7 +27,7 @@ export function consoleErrorLogger({
     if (!printStack) {
       console.log(color('Error: ', 'red') + err.message)
     } else {
-      console.error(err.stack || err.message)
+      console.log(err.stack || err.message)
     }
     next(err)
   }
