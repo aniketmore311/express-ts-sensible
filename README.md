@@ -21,3 +21,10 @@
 - `http-errors` for good error handling
 - `nodemon`, `ts-node`, `eslint` and `prettier` for ease of development
 - Dockerfile for docker support
+
+### This starter do not include
+
+I have purposefully skipped some things to keep the starter as unopinionated as possible because my own preference might not be what you need.
+
+1. logging - there are muliple loggers for the ts ecosystem (pino)[] and (winston)[] are the most popular
+2. testing - there are multiple testing frameworks for ts ecosystem (mocha)[] and (jest)[] are the most popular
