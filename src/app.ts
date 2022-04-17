@@ -34,12 +34,6 @@ app.get('/', (req, res) => {
 app.get('/health', (req, res) => {
   return res.json({ status: 'ok' })
 })
-app.get('/_internal/error', (req, res) => {
-  throw new Error('This is an error')
-})
-app.get('/_internal/httpError', (req, res) => {
-  throw new createHttpError.BadRequest('bad request custom error')
-})
 
 // controllers
 registerUserRoutes(app)
