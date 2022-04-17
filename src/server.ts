@@ -3,13 +3,14 @@ import { config } from 'dotenv'
 config()
 
 import { app } from './app'
-import appConfig from './config/appConfig'
-import { getEnv } from './lib/utils'
+import { configService } from './config'
 
-const PORT = getEnv('PORT')
-const NODE_ENV = getEnv('NODE_ENV')
-const name = appConfig.getConfig('APP_NAME')
+const PORT = configService.getConfig('PORT')
+const NODE_ENV = configService.getConfig('NODE_ENV')
+const name = configService.getConfig('APP_NAME')
 
 app.listen(PORT, () => {
-  console.log(`${name}\nserver started - port: ${PORT}, mode: ${NODE_ENV}`)
+  console.log(
+    `${name}\nserver started on http://localhost:${PORT} \nport: ${PORT}, mode: ${NODE_ENV}`
+  )
 })

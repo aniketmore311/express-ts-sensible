@@ -12,16 +12,3 @@ export function catchAsync(
     fn(req, res, next).catch(next)
   }
 }
-
-export function getEnv(name:string, defaultValue?: string){
-  const val = process.env[name];
-  if(val == undefined){
-    if(defaultValue == undefined){
-      throw new Error(`env var with value ${name} not found`);
-    }else{
-      return defaultValue;
-    }
-  }else{
-    return val;
-  }
-}
