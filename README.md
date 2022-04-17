@@ -22,7 +22,7 @@
 - `nodemon`, `ts-node`, `eslint` and `prettier` for ease of development
 - Dockerfile for docker support
 
-### This starter do not include
+### This starter does not include
 
 I have purposefully skipped some things to keep the starter as unopinionated as possible because my own preference might not be what you need.
 
