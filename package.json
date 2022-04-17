@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pm2-runtime dist/server.js -i -1",
+    "start":"npm run start:prod",
+    "dev": "npm run start:dev",
+    "start:prod": "pm2-runtime dist/server.js -i -1",
     "start:node": "node dist/server.js",
     "start:dev": "nodemon src/server.ts",
-    "dev": "nodemon src/server.ts",
     "build": "tsc",
     "prestart": "tsc",
     "format": "prettier --write .",

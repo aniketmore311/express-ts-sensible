@@ -8,7 +8,6 @@ import { errorHandler } from './lib/middleware/errorHandler'
 import { notFoundHandler } from './lib/middleware/notFoundHandler'
 import { consoleErrorLogger } from './lib/middleware/consoleErrorLogger'
 import { configService } from './config'
-import createHttpError from 'http-errors'
 
 export const app = express()
 
