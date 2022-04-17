@@ -3,7 +3,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
 
-import { userRouter } from './routes/users'
+import registerUserRoutes from './routes/users'
 import { errorHandler } from './lib/middleware/errorHandler'
 import { notFoundHandler } from './lib/middleware/notFoundHandler'
 import { consoleErrorLogger } from './lib/middleware/consoleErrorLogger'
@@ -42,7 +42,7 @@ app.get('/_internal/httpError', (req, res) => {
 })
 
 // controllers
-app.use('/api/v1/users', userRouter)
+registerUserRoutes(app)
 
 // 404 handler
 app.use(notFoundHandler())
