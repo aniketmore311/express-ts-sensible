@@ -26,5 +26,5 @@
 
 I have purposefully skipped some things to keep the starter as unopinionated as possible because my own preference might not be what you need.
 
-1. logging - there are muliple loggers for the ts ecosystem (pino)[] and (winston)[] are the most popular
-2. testing - there are multiple testing frameworks for ts ecosystem (mocha)[] and (jest)[] are the most popular
+1. logging - there are muliple loggers for the ts ecosystem [pino](https://github.com/pinojs/pino) and [winston](https://github.com/winstonjs/winston) are the most popular
+2. testing - there are multiple testing frameworks for ts ecosystem [mocha](https://github.com/mochajs/mocha) and [jest](https://github.com/facebook/jest) are the most popular
