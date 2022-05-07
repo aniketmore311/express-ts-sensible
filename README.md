@@ -8,7 +8,7 @@
 2. `$ cd <your project name>`
 3. `$ cp .env.example .env`
 4. `$ npm install`
-5. `$ npm start`
+5. `$ npm start` to run in cluster mode or `$ npm run start:node` to run a single process
 
 ### This starter includes
 
